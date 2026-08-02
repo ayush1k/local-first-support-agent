@@ -5,16 +5,20 @@ from pathlib import Path
 # Ensure root folder is in python path
 sys.path.insert(0, str(Path(__file__).parent.resolve()))
 
+import config
 from src.models import get_llm
 
 def main():
+    token_status = f"Set ({config.HF_TOKEN[:4]}...)" if config.HF_TOKEN else "Not set (Anonymous)"
     print("=" * 60)
     print("TESTING LOCAL HUGGING FACE MODEL LOADING & GENERATION")
+    print(f"Hugging Face Token: {token_status}")
     print("=" * 60)
 
     start_init = time.time()
     llm = get_llm()
     init_duration = time.time() - start_init
+
 
     prompt = "Say hello world"
     print(f"\nPrompt: '{prompt}'")

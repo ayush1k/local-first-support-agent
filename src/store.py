@@ -23,7 +23,11 @@ class VectorStore:
         self.device = device
 
         print(f"[VectorStore] Loading embedding model '{model_name}' on device '{device}'...")
-        self.model = SentenceTransformer(model_name, device=device)
+        kwargs = {}
+        if config.HF_TOKEN:
+            kwargs["token"] = config.HF_TOKEN
+        self.model = SentenceTransformer(model_name, device=device, **kwargs)
+
 
         self.passages: List[Dict[str, Any]] = []
         self.embeddings: Optional[torch.Tensor] = None

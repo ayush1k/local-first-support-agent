@@ -7,3 +7,6 @@ __pycache__/
 *.log
 venv/
 .venv/
+.env
+.env.*
+

@@ -1,6 +1,16 @@
 import os
 import torch
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Hugging Face Authentication Token
+HF_TOKEN = os.getenv("HF_TOKEN")
+if HF_TOKEN:
+    os.environ["HF_TOKEN"] = HF_TOKEN
+
 
 # Base Paths
 BASE_DIR = Path(__file__).parent.resolve()

@@ -34,9 +34,14 @@ class LocalLLM:
         print(f"[LocalLLM] Initializing local HF model '{self.model_name}' on device '{self.device}'...")
         start_time = time.time()
 
+        kwargs = {}
+        if config.HF_TOKEN:
+            kwargs["token"] = config.HF_TOKEN
+
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.model_name,
             trust_remote_code=True,
+            **kwargs,
         )
 
         # Set pad token if missing
@@ -48,7 +53,9 @@ class LocalLLM:
             dtype=self.torch_dtype,
             trust_remote_code=True,
             low_cpu_mem_usage=True,
+            **kwargs,
         )
+
 
         if self.device != "cpu":
             self.model.to(self.device)
