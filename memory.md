@@ -3,4 +3,11 @@ Phase 1.2 Complete: Environment setup and configuration verified.
 - Dependencies installed: langgraph, langchain-core, transformers, sentence-transformers, pydantic, torch, rich, pytest.
 - Config configured: embedding_model='sentence-transformers/all-MiniLM-L6-v2', llm_model='Qwen/Qwen2.5-1.5B-Instruct', device='cpu'.
 - Environment verified via test_env.py. Next step is knowledge base indexing & retrieval implementation.
+Phase 2.1 Complete: Pydantic State defined.
+Phase 2.2 Complete: Retrieval Engine implemented.
+- Lightweight in-memory vector store built with sentence-transformers ('sentence-transformers/all-MiniLM-L6-v2').
+- Indexed 10 markdown documentation files from knowledge_base/ and historical resolved cases from resolved_cases.json.
+- Verified semantic cosine similarity retrieval with query test ('What happens if I change my timezone?').
+
+
 
