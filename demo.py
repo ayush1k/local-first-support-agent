@@ -1,6 +1,19 @@
 import json
 from pydantic import BaseModel
-from src.graph import graph # or 'workflow' / 'compiled_graph' depending on your variable name
+
+print("==================================================")
+print("Booting up OrbitDesk Local Support Agent...")
+print("Initializing and downloading local models...")
+print("==================================================\n")
+
+# Importing the graph will trigger any module-level initializations
+from src.graph import graph 
+
+# Force the LLM and Embedding models to load into memory by running a warm-up query.
+print("\n[System] Performing initial model warm-up. Please wait...\n")
+_ = graph.invoke({'question': 'warm-up query'})
+print("\n[System] Models loaded successfully! Ready for live testing.\n")
+print("==================================================")
 
 def run_query(query):
     print(f"\n[USER QUERY]: {query}")
