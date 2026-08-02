@@ -11,7 +11,8 @@ OUTPUT_SCHEMA_PATH = BASE_DIR / "output_schema.json"
 
 # Model Configurations
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
-LLM_MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
+LLM_MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
+
 
 # Device Selection Logic
 def get_device() -> str:
